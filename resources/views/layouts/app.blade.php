@@ -14,6 +14,11 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="w-screen h-screen flex justify-center items-center">Hello World</div>
+
+        @include('layouts.navigation')
+
+        <main>
+            {{ $slot }}
+        </main>
     </body>
 </html>
