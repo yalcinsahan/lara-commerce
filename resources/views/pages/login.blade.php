@@ -12,13 +12,8 @@
                 <input type="email"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="email" name="email" required>
-                <ul>
-                    @foreach ($errors->get('email') as $emailError)
-                        <li class="text-sm text-red-700">
-                            {{ $emailError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('email')"></x-input-error>
+
             </div>
 
             <!--password-->
@@ -27,19 +22,15 @@
                 <input type="text"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="password" name="password" type="password" required>
-                <ul>
-                    @foreach ($errors->get('password') as $passwordError)
-                        <li class="text-sm text-red-700">
-                            {{ $passwordError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('password')"></x-input-error>
             </div>
 
-             <!-- remember me -->
-             <div class="block mt-4">
+            <!-- remember me -->
+            <div class="block mt-4">
                 <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-transparent" name="remember">
+                    <input id="remember_me" type="checkbox"
+                        class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-transparent"
+                        name="remember">
                     <span class="ml-2 text-sm text-gray-600">Remember me</span>
                 </label>
             </div>

@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'name' => fake()->unique()->name(),
             'details' =>  Str::random(1000),
             'image' => fake()->unique()->name(),
+            'price' =>  fake()->randomDigit(),
         ];
     }
 }

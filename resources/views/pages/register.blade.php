@@ -12,13 +12,8 @@
                 <input type="text"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="name" name="name">
-                <ul>
-                    @foreach ($errors->get('name') as $nameError)
-                        <li class="text-sm text-red-700">
-                            {{ $nameError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('name')"></x-input-error>
+
             </div>
 
             <!--email-->
@@ -27,13 +22,8 @@
                 <input type="text"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="email" name="email">
-                <ul>
-                    @foreach ($errors->get('email') as $emailError)
-                        <li class="text-sm text-red-700">
-                            {{ $emailError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('email')"></x-input-error>
+
             </div>
 
             <!--password-->
@@ -42,33 +32,26 @@
                 <input type="text"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="password" name="password">
-                <ul>
-                    @foreach ($errors->get('password') as $passwordError)
-                        <li class="text-sm text-red-700">
-                            {{ $passwordError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('password')"></x-input-error>
+
             </div>
 
             <!--confirm password-->
             <div class="mt-4">
-                <label for="password_confirmation" class="block font-medium text-sm text-gray-700">Confirm Password:</label>
+                <label for="password_confirmation" class="block font-medium text-sm text-gray-700">Confirm
+                    Password:</label>
                 <input type="text"
                     class="block mt-1 w-full border-gray-300 rounded-md shadow-sm focus:ring-0 focus:border-gray-500"
                     id="password_confirmation" name="password_confirmation">
-                <ul>
-                    @foreach ($errors->get('password_confirmation') as $confirmError)
-                        <li class="text-sm text-red-700">
-                            {{ $confirmError }}
-                        </li>
-                    @endforeach
-                </ul>
+                <x-input-error :errors="$errors->get('password_confirmation')"></x-input-error>
+
             </div>
 
             <!--actions-->
             <div class="flex flex-row justify-between mt-4 items-center">
-                <a href="{{route('login')}}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Already Registered?</a>
+                <a href="{{ route('login') }}"
+                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Already
+                    Registered?</a>
 
                 <button type="submit" class="block bg-black text-white px-4 py-2 rounded-xl">
                     Register

@@ -27,3 +27,9 @@ Route::get('/register', [AuthController::class,'createRegister'])->name('registe
 
 Route::post('/register', [AuthController::class,'storeRegister'])->name('register');
 
+Route::get('/add-product', [ProductController::class,'create'])->name('add-product');
+
+Route::post('/add-product', [ProductController::class,'store'])->name('add-product');
+
+
+

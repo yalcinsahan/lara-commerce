@@ -15,10 +15,12 @@
     </head>
     <body>
 
-        @include('layouts.navigation')
+
+            @include('layouts.navigation')
 
         <main>
             {{ $slot }}
         </main>
+   
     </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -15,7 +16,7 @@ class ProductController extends Controller
 
         $products = Product::all();
 
-        return view('pages.home',['products'=>$products]);
+        return view('pages.home', ['products' => $products]);
     }
 
     /**
@@ -23,7 +24,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.add-product');
     }
 
     /**
@@ -31,7 +32,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => ['required', 'string', 'unique:' . Product::class],
+            'details' => ['required', 'string'],
+            'image' => 'required|image|mimes:png,jpg,jpeg|max:2048',
+            'price' => ['required']
+        ]);
+
+        $newImageName = Str::random(30) . '.' . $request->image->extension();
+
+        $request->image->move(public_path('product-images'), $newImageName);
+
+        $product = new Product;
+
+        $product->name = $request->name;
+        $product->details = $request->details;
+        $product->price = $request->price;
+        $product->image = 'product-images/'.$newImageName;
+
+
+        $product->save();
+
+        return redirect('/add-product')->with("status", "product added successfully");
     }
 
     /**

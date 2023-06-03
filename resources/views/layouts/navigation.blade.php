@@ -7,6 +7,7 @@
         @auth
         <form action="{{route('logout')}}" method="POST">
             @csrf
+        <a href="{{ route('add-product') }}" class="mr-3">Add Product</a>
             <button type="submit">Logout</button>
         </form>
         @else
